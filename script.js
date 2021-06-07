@@ -1,6 +1,21 @@
-let num = 266219;
-let arr = (num).toString().split('');
+'use strict';
 
-const res = (arr.reduce((acc, rec) => acc * rec) ** 3).toString();
+let isNumber = function(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
 
-console.log(res.substring(0,2));
+};
+
+function myFunc(a) {
+    a = prompt('Введите значение:');
+    if (isNumber(a)) {
+        alert ('Не строка! Пожалуйста, введите строку.');
+        myFunc();
+    }else if (a.length > 30) {
+        console.log(a.trim().slice(0,30), '...');
+    }else if (a.length <= 30) {
+        console.log(a.trim());
+    }
+    // console.log(a); - Можно проверить, что все числа ввелись и ничего не удалилось slice-ом
+}
+
+myFunc();
